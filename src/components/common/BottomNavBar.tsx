@@ -1,20 +1,12 @@
-import { useNavigate } from 'react-router-dom';
-import Icon from '@eolluga/eolluga-ui/icon/Icon';
 import { NavBarType } from '@/types';
-import { IoGameControllerOutline } from 'react-icons/io5';
+import { FaHome, FaGamepad, FaSearch, FaUser } from 'react-icons/fa';
 
 const BottomNavBar = ({ activeTab, setActiveTab }: NavBarType) => {
-  const navigate = useNavigate();
   const tabs = [
-    { id: 'home', label: '메인', icon: <Icon icon="home" />, path: '/' },
-    {
-      id: 'game',
-      label: '게임',
-      icon: <IoGameControllerOutline size={24} />,
-      path: '/game',
-    },
-    { id: 'search', label: '검색', icon: <Icon icon="search" />, path: '/search' },
-    { id: 'profile', label: '마이', icon: <Icon icon="person_outlined" />, path: '/profile' },
+    { id: 'home', label: '메인', icon: <FaHome /> },
+    { id: 'game', label: '게임', icon: <FaGamepad /> },
+    { id: 'search', label: '검색', icon: <FaSearch /> },
+    { id: 'profile', label: '마이', icon: <FaUser /> },
   ];
 
   return (
@@ -23,10 +15,7 @@ const BottomNavBar = ({ activeTab, setActiveTab }: NavBarType) => {
         {tabs.map((tab) => (
           <button
             key={tab.id}
-            onClick={() => {
-              setActiveTab(tab.id);
-              navigate(tab.path);
-            }}
+            onClick={() => setActiveTab(tab.id)}
             className={`flex flex-col items-center justify-center w-full h-full py-2 text-sm transition-colors duration-200 ${
               activeTab === tab.id ? 'text-black bg-gray-200 rounded-md' : 'text-gray-500'
             }`}

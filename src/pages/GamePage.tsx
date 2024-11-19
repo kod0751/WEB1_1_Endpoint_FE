@@ -1,12 +1,11 @@
-import { useNavigate } from 'react-router-dom';
 import Avatar from '@eolluga/eolluga-ui/Display/Avatar';
 import Icon from '@eolluga/eolluga-ui/icon/Icon';
-import { IoGameControllerOutline, IoTrophyOutline } from 'react-icons/io5';
-import TopBar from '../components/common/TopBar';
-import defaultImageURL from '@/shared/defaultImage';
+import TopBar from '../components/TopBar';
+import BottomSheet from '../components/BottomSheet';
+import { useState } from 'react';
 
 export default function Game() {
-  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="w-full flex flex-col">
       <TopBar />
@@ -15,7 +14,7 @@ export default function Game() {
           <div className="p-6 mb-8 bg-white border rounded-lg">
             <div className="flex items-center gap-4">
               <div className="text-white">
-                <Avatar input="image" image={defaultImageURL} />
+                <Avatar text="석" />
               </div>
               <div className="flex-1">
                 <h2 className="text-lg font-semibold mb-1">장원석님</h2>
@@ -29,10 +28,7 @@ export default function Game() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <button
-              className="w-full flex h-16 text-lg justify-between items-center p-4 bg-white border rounded-lg focus:bg-gray-100"
-              onClick={() => navigate('/game/create')}
-            >
+            <button className="w-full flex h-16 text-lg justify-between items-center p-4 bg-white border rounded-lg focus:bg-gray-100">
               <div className="flex items-center gap-3">
                 <Icon icon={'people'} />방 생성
               </div>
@@ -41,7 +37,7 @@ export default function Game() {
 
             <button className="w-full flex h-16 text-lg justify-between items-center p-4 bg-white border rounded-l focus:bg-gray-100">
               <div className="flex items-center gap-3">
-                <IoGameControllerOutline size={24} />
+                <Icon icon={'person_outlined'} />
                 랜덤 매칭
               </div>
               <Icon icon={'chevron_right_outlined'} />
@@ -49,16 +45,17 @@ export default function Game() {
 
             <button
               className="w-full flex h-16 text-lg justify-between items-center p-4 bg-white border rounded-lg focus:bg-gray-100"
-              onClick={() => console.log(11)}
+              onClick={() => setIsOpen(!isOpen)}
             >
               <div className="flex items-center gap-3">
-                <IoTrophyOutline size={24} />
+                <Icon icon={'person_outlined'} />
                 코드로 참가
               </div>
               <Icon icon={'chevron_right_outlined'} />
             </button>
           </div>
         </div>
+        {isOpen ? <BottomSheet isOpen={isOpen} setOpen={setIsOpen} /> : ''}
       </main>
     </div>
   );

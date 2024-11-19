@@ -1,4 +1,3 @@
-import Icon from '@eolluga/eolluga-ui/icon/Icon';
 import { useEffect, useRef, memo } from 'react';
 
 interface ToastMessageProps {
@@ -19,7 +18,7 @@ function ToastMessage({ message, icon, open, setOpen }: ToastMessageProps) {
       timerRef.current = setTimeout(() => {
         setOpen(false);
         timerRef.current = null;
-      }, 1000);
+      }, 700);
     }
 
     return () => {
@@ -39,11 +38,15 @@ function ToastMessage({ message, icon, open, setOpen }: ToastMessageProps) {
         willChange: 'opacity, transform',
         zIndex: 3,
       }}
-      className="flex flex-row px-spacing-05 py-spacing-03 bg-layer-inverse rounded-full w-full transition-opacity justify-between absolute bottom-[100px]"
+      className="flex flex-row px-spacing-05 py-spacing-03 bg-layer-inverse rounded-full w-full max-w-[calc(100%-32px)] transition-opacity justify-between absolute bottom-[100px]"
     >
       <div className="flex flex-row items-center">
-        {icon === 'check' && <Icon icon="modifier_check" />}
-        {icon === 'warning' && <Icon icon="modifier_cancel" />}
+        {icon === 'check' && (
+          <img height={20} width={20} alt="check icon" src="/image/check-icon.svg" />
+        )}
+        {icon === 'warning' && (
+          <img height={20} width={20} alt="warning icon" src="/image/warning-icon.svg" />
+        )}
         <span className="pl-2 text-text-on-color body-01-medium">{message}</span>
       </div>
     </div>

@@ -1,42 +1,31 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import MainLayout from './layouts/MainLayout';
-import AuthLayout from './layouts/AuthLayout';
-import { GamePage, MainPage, MyPage, SearchPage } from './pages';
-import { CreateGame, WaitingRoom, RandomMatch, CodeEntry } from './pages/game';
-import CallbackPage from './pages/Login/CallbackPage';
-import LoginPage from './pages/Login/LoginPage';
-
 import { useState } from 'react';
-import ReviewNote from './pages/profile/ReviewNote';
+import { BottomNavBar } from './components';
+import { GamePage, MainPage, MyPage, SearchPage } from './pages';
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');
 
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'home':
+        return <MainPage />;
+      case 'game':
+        return <GamePage />;
+      case 'search':
+        return <SearchPage />;
+      case 'profile':
+        return <MyPage />;
+      default:
+        return <MainPage />;
+    }
+  };
   return (
-    <Router>
-      <Routes>
-        {/* 인증 관련 경로 AuthLayout*/}
-        <Route element={<AuthLayout />}>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/auth/kakao/callback" element={<CallbackPage provider="kakao" />} />
-          <Route path="/auth/google/callback" element={<CallbackPage provider="google" />} />
-        </Route>
-
-        {/* 그 외 BottomNavbar 사용시 MainLayout */}
-        <Route element={<MainLayout activeTab={activeTab} setActiveTab={setActiveTab} />}>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/game" element={<GamePage />} />
-          <Route path="/search" element={<SearchPage />} />
-          <Route path="/profile" element={<MyPage />} />
-          <Route path="/profile/reviewNote" element={<ReviewNote />} />
-          <Route path="/game/create" element={<CreateGame />} />
-          <Route path="/game/waiting" element={<WaitingRoom />} />
-          <Route path="/game/random" element={<RandomMatch />} />
-          <Route path="/game/entry" element={<CodeEntry />} />
-          {/* 추가적인 페이지 라우팅을 등록 */}
-        </Route>
-      </Routes>
-    </Router>
+    <>
+      <div className="pb-16">
+        {renderContent()}
+        <BottomNavBar activeTab={activeTab} setActiveTab={setActiveTab} />
+      </div>
+    </>
   );
 }
 
