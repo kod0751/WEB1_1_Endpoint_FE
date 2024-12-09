@@ -1,7 +1,7 @@
 import { EventSourcePolyfill } from 'event-source-polyfill';
 import axios from 'axios';
 import { RandomMatchEvent } from '@/types/GameTypes';
-import { getStorageItem } from '@/utils/storage';
+import { getStorageItem, setStorageItem } from '@/utils/storage';
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -33,7 +33,8 @@ function initializeEventSource() {
         const { accessToken } = refreshResponse.data.result;
 
         // 새로운 토큰 저장
-        localStorage.setItem('accessToken', accessToken);
+        setStorageItem('accessToken', accessToken);
+        //localStorage.setItem('accessToken', accessToken);
 
         // SSE 재연결
         console.log('토큰 갱신 성공. SSE 재연결 시도...');

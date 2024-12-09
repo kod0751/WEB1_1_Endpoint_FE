@@ -13,6 +13,7 @@ import { Button as ShadcnButton } from '@/shadcn/ui/button';
 import { Topic } from '@/types/GameTypes';
 import { useStompStore } from '@/api/game/useStompStore';
 import { Loader2 } from 'lucide-react';
+import AboutPage from '@/components/common/AboutPage';
 
 const topics: Topic[] = [
   '알고리즘',
@@ -83,6 +84,11 @@ export default function CreateGame() {
 
   return (
     <FlexBox direction="col">
+      <AboutPage
+        title="게임 생성"
+        description="사설 게임 퀴즈방을 생성하고 게임 옵션을 지정할 수 있는 페이지"
+        keywords="퀴즈방 생성, 퀴즈 주제, 난이도, 문제 갯수"
+      />
       <TopBar leftIcon="left" leftText="게임 방 생성" onClickLeft={() => navigate('/game')} />
       <Container>
         <Card>

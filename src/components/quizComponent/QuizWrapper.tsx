@@ -49,7 +49,7 @@ function QuizWrapper({ quiz }: QuizWrapperProps) {
 
   const authorName = quiz.author?.name || 'default';
   const authorImage = quiz.author?.imagePath || '/';
-
+  
   const toggleLikeMutation = useToggleLike(
     () => {
       setIsLiked((prev) => !prev);
@@ -68,7 +68,7 @@ function QuizWrapper({ quiz }: QuizWrapperProps) {
     <div className="flex justify-center">
       <div className="w-full p-6 bg-white border border-gray-300 rounded-lg shadow-sm">
         <div className="flex items-center mb-4">
-          <Avatar size="S" image={authorImage} />
+          <Avatar input="image" size="S" image={authorImage} />
           <div className="ml-4">
             <h4 className="text-md font-bold">{authorName}</h4>
             <p className="text-sm text-gray-500">{quiz.type}</p>

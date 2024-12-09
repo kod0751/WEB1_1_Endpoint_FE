@@ -11,6 +11,7 @@ import { ArrowRight } from 'lucide-react';
 import Container from '@/components/layout/Container';
 import Card from '@/components/common/Card';
 import { Button as ShadcnButton } from '@/shadcn/ui/button';
+import AboutPage from '@/components/common/AboutPage';
 
 export default function CodeEntry() {
   const navigate = useNavigate();
@@ -44,6 +45,11 @@ export default function CodeEntry() {
 
   return (
     <FlexBox direction="col">
+      <AboutPage
+        title="초대 코드"
+        description="초대 코드를 통해 사설 게임방에 참여할 수 있도록 하는 페이지"
+        keywords="초대, 코드, 게임, 퀴즈"
+      />
       <TopBar leftIcon="left" leftText="코드로 참가" onClickLeft={() => navigate('/game')} />
       <Container>
         <Card>

@@ -13,10 +13,10 @@ interface CommentItemProps {
 
 const CommentItem = ({ comment, onDelete, toggleReplies, expanded, onReply }: CommentItemProps) => (
   <div className="flex items-start gap-3 mb-2">
-    <Avatar size="S" />
+    <Avatar input="image" image={comment.writer.profileImageUrl} size="S" />
     <div className="flex-1">
       <div className="text-sm flex justify-between items-center">
-        <span className="font-medium">User {comment.writerId}</span>
+        <span className="font-medium">{comment.writer.name}</span>
         <div className="flex items-center gap-2">
           {comment.parentCommentId === 0 && (
             <Button

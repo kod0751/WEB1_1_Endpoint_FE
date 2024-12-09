@@ -8,6 +8,7 @@ import Container from '@/components/layout/Container';
 import Celebrate from './Celebrate';
 import { Rank } from '@/types/GameTypes';
 import { useGameStore } from '@/stores/useGameStore';
+import AboutPage from '@/components/common/AboutPage';
 
 export default function Result() {
   const { rank, results, players } = useGameStore();
@@ -36,6 +37,11 @@ export default function Result() {
 
   return (
     <div className="flex flex-col">
+      <AboutPage
+        title="게임 결과"
+        description="사설, 경쟁전 퀴즈 게임 결과를 조회하는 페이지"
+        keywords="퀴즈, 게임, 결과, 조회"
+      />
       <TopBar />
       {showCelebrate ? (
         <Celebrate show={show} setShow={setShow} />

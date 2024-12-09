@@ -11,7 +11,7 @@ const QuizRenderer = ({ quiz, onAnswerSelect, selectedAnswer }: QuizRendererProp
   if (quiz.type === 'OX 퀴즈') {
     return <QuizOX quiz={quiz} onAnswerSelect={onAnswerSelect} selectedAnswer={selectedAnswer} />;
   } else if (quiz.type === 'AB 테스트') {
-    return <QuizAB quiz={quiz} selectedAnswer={selectedAnswer} />;
+    return <QuizAB quiz={quiz} onAnswerSelect={onAnswerSelect} selectedAnswer={selectedAnswer}  />;
   } else if (quiz.type === '객관식') {
     return <QuizMul quiz={quiz} onAnswerSelect={onAnswerSelect} selectedAnswer={selectedAnswer} />;
   }

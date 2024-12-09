@@ -16,3 +16,12 @@ export const getStorageItem = (key: string) => {
     return null;
   }
 };
+
+export const setStorageItem = (key: string, value: any) => {
+  try {
+    const jsonString = JSON.stringify(value);
+    localStorage.setItem(key, jsonString);
+  } catch (error) {
+    console.error('setStorageItem:', error);
+  }
+};

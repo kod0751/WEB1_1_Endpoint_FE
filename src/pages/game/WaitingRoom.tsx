@@ -16,6 +16,7 @@ import Label from '@/components/common/Label';
 import { Button as ShadcnButton } from '@/shadcn/ui/button';
 import ToastMessage from '@/components/common/ToastMessage';
 import LoadingSpinner from '@/components/game/LoadingSpinner';
+import AboutPage from '@/components/common/AboutPage';
 
 const WaitingRoom = () => {
   const navigate = useNavigate();
@@ -60,6 +61,11 @@ const WaitingRoom = () => {
 
   return (
     <div className="flex flex-col">
+      <AboutPage
+        title="게임 대기"
+        description="사설, 경쟁전 참가 이전에 참여자들과 대기하는 페이지"
+        keywords="대기, 퀴즈, 게임"
+      />
       <TopBar leftIcon="left" leftText="게임 대기방" onClickLeft={exitGameRoom} />
       {isLoading && <LoadingSpinner />}
 

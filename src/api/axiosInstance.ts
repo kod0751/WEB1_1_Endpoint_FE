@@ -1,4 +1,4 @@
-import { getStorageItem } from '@/utils/storage';
+import { getStorageItem, setStorageItem } from '@/utils/storage';
 import axios from 'axios';
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -29,20 +29,18 @@ axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-    //console.log(error.response.status);
-    console.log(originalRequest);
     if (error.response.status === 401) {
       //originalRequest._retry = true;
       try {
         // 원래 요청 재시도
         const refreshResponse = await axios.post(
-          `${BACKEND_URL}/auth/reissue`,
+          `${BACKEND_URL}/api/auth/reissue`,
           {},
           { withCredentials: true },
         );
-        console.log(refreshResponse.data);
         const { accessToken } = refreshResponse.data.result;
-        localStorage.setItem('accessToken', accessToken);
+        setStorageItem('accessToken', accessToken);
+        //localStorage.setItem('accessToken', accessToken);
         return axiosInstance(originalRequest);
       } catch (retryError) {
         console.error('재요청 실패:', retryError);

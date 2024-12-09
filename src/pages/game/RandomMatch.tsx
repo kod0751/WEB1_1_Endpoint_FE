@@ -9,6 +9,7 @@ import TopBar from '@/components/common/TopBar';
 import Card from '@/components/common/Card';
 import { Button as ShadcnButton } from '@/shadcn/ui/button';
 import LoadingSpinner from '@/components/game/LoadingSpinner';
+import AboutPage from '@/components/common/AboutPage';
 
 type MatchEvent = {
   roomId: number;
@@ -62,6 +63,11 @@ export default function RandomMatching() {
 
   return (
     <div className="flex flex-col">
+      <AboutPage
+        title="랜덤 매칭"
+        description="퀴즈 경쟁전을 위한 랜덤 매칭 대기 페이지"
+        keywords="경쟁전, 퀴즈, 레이팅"
+      />
       <TopBar leftIcon="left" leftText="랜덤 매칭" onClickLeft={() => cancleMatch()} />
       {isLoading && <LoadingSpinner />}
       <main className="flex-1 pt-20 pb-6 px-4">

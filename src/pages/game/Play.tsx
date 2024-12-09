@@ -13,6 +13,7 @@ import FlexBox from '@/components/layout/FlexBox';
 import Container from '@/components/layout/Container';
 import NotFound from '@/components/game/NotFound';
 import { GameQuiz } from '@/types/GameTypes';
+import AboutPage from '@/components/common/AboutPage';
 
 export default function GameProgress() {
   const navigate = useNavigate();
@@ -71,6 +72,11 @@ export default function GameProgress() {
 
   return (
     <FlexBox direction="col">
+      <AboutPage
+        title="게임 플레이"
+        description="게임(퀴즈)을 플레이하는 페이지입니다"
+        keywords="게임, 퀴즈, 멀티 플레이, 경쟁"
+      />
       <header className="fixed top-0 left-0 right-0 bg-white z-10">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <div className="text-2xl font-bold">{timeLeft}초</div>

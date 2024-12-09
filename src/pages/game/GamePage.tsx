@@ -8,6 +8,7 @@ import TopBar from '@/components/common/TopBar';
 import Container from '@/components/layout/Container';
 import FlexBox from '@/components/layout/FlexBox';
 import { Skeleton } from '@/shadcn/ui/skeleton';
+import AboutPage from '@/components/common/AboutPage';
 
 export default function Game() {
   const navigate = useNavigate();
@@ -15,6 +16,11 @@ export default function Game() {
 
   return (
     <div className="flex flex-col">
+      <AboutPage
+        title="게임 메인"
+        description="간단한 사용자 프로필 조회 및 게임 관련 옵션을 선택하는 페이지"
+        keywords="게임, 퀴즈, 랜덤 매칭, 초대 코드"
+      />
       <TopBar />
       <Container>
         <Card>

@@ -3,15 +3,17 @@ import type { BaseQuizAPI } from '@/types';
 
 interface QuizABProps {
   quiz: BaseQuizAPI;
+  onAnswerSelect: (answer: number) => void;
   selectedAnswer: number | null;
 }
 
-function QuizAB({ quiz, selectedAnswer }: QuizABProps) {
+function QuizAB({ quiz, onAnswerSelect, selectedAnswer }: QuizABProps) {
   const [currentAnswer, setCurrentAnswer] = useState<number | null>(selectedAnswer);
 
   const handleOptionClick = (optionNo: number) => {
     if (currentAnswer !== null) return;
     setCurrentAnswer(optionNo);
+    onAnswerSelect(optionNo);
   };
 
   return (
